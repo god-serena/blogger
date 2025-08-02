@@ -1,0 +1,11 @@
+/* [project]/src/css_overrides/Editor.css [app-client] (css) */
+.editor p {
+  font-size: 16px;
+}
+
+.editor .ql-editor {
+  height: 400px;
+  overflow: auto;
+}
+
+/*# sourceMappingURL=src_css_overrides_Editor_css_e59ae46c._.single.css.map*/
