@@ -1,0 +1,43 @@
+services:
+  #blogger_frontend:
+  #  build: ./blogger
+  #  container_name: blogger_frontend
+  #  ports:
+  #    - "3000:3000"
+  #  volumes:
+  #    - type: bind
+  #      source: ./blogger
+  #      target: /blogger
+  #    - /blogger/node_modules
+  #  restart: on-failure:5
+  blogger_backend:
+    build: ./blogger_api
+    container_name: blogger_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: ./blogger_api
+        target: /blogger_api
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - blogger_db
+    restart: on-failure:5
+  blogger_db:
+    image: postgres:15.3-bullseye
+    container_name: blogger_db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=blogger_db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - PGUSER=user
+    volumes:
+      - type: volume
+        source: blogger_pg_db
+        target: /blogger_api/db
+
+volumes:
+  blogger_pg_db:
