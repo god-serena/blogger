@@ -1,0 +1,11 @@
+#blogger_app/node_modules
+#blogger_app/coverage
+#blogger_app/build
+#blogger_app/.DS_Store
+#blogger_app/src
+#blogger_app
+
+.vscode
+.DS_Store
+*.pyc
+.idea
